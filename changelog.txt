@@ -1,0 +1,20 @@
+---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 24. 09. 2018
+  Features:
+    - Concreep now prioritizes refined concrete.
+---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 28. 12. 2017
+  Features:
+    - Concreep now autoremoves cliffs as concrete is laid down.  Right now it auto-deducts the cliff-explosives from the logistic network instead of delivering it via bot.  Hoping to change this in the future.
+  Note:
+    - A roboport may fail to remove cliffs if insufficient cliff-explosives are available and it can be stuck in a state where it won't check again.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 15. 12. 2017
+  Features:
+    - Updated for 0.16
+	- Added option to scale back the range roboports will build concrete.
+	- Added option to ignore already built tiles (Brick, asphault, etc)
+---------------------------------------------------------------------------------------------------

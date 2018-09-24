@@ -1,13 +1,17 @@
-function init()
-	global.creepers = {}
+function init()	
+	global.creepers = {} --Roboports added to list
 	global.index = 1
-	local roboports = game.surfaces[1].find_entities_filtered{type="roboport"}
-	for index, port in pairs(roboports) do
-		addPort(port)
+	--game.print("Total surfaces" .. #game.surfaces)
+	--local roboports = game.surfaces[1].find_entities_filtered{type="roboport"}
+	for _, surfaceIndex in pairs(game.surfaces) do
+		for index, port in pairs(surfaceIndex.find_entities_filtered{type="roboport"}) do
+			addPort(port)
+		end
 	end
 end
 
 function checkRoboports()
+	--game.print("Total Roboports seen: " .. #global.creepers)
 	if global.creepers and #global.creepers > 0 then
 		--for index, creeper in pairs(global.creepers) do
 		local creeper = global.creepers[global.index]
@@ -23,9 +27,9 @@ function checkRoboports()
 						return false
 					end
 					if roboport.logistic_network.available_construction_robots > 0 then
-						amount = math.max(math.floor(roboport.logistic_network.available_construction_robots / 10), 1)
-						-- amount = 10
-						--game.print(serpent.line(index))
+						local constructionFactor = 5
+						amount = math.max(math.floor(roboport.logistic_network.available_construction_robots / constructionFactor), 1)						
+						--game.print("Total Construction Robots / ".. constructionFactor .. ": " .. amount)
 						if creep(global.index, amount) then
 							return true
 						end
@@ -44,6 +48,9 @@ function checkRoboports()
 			global.index = 1
 		end
 		--end
+	else
+		--game.print("Reinit called")
+		init()
 	end
 end
 
@@ -126,9 +133,13 @@ end
 
 function roboports(event)
 	if global.creepers then
-		if event.created_entity and event.created_entity.valid and event.created_entity.type == "roboport" then
-			addPort(event.created_entity)
-		end
+		if global.creepers.count == nil then
+			if event.created_entity and event.created_entity.valid and event.created_entity.type == "roboport" then
+				addPort(event.created_entity)
+			end
+		else
+			init()
+		end	
 	else
 		init()
 	end
@@ -175,16 +186,20 @@ script.on_event(defines.events.on_robot_built_entity, function(event)
 	roboports(event)
 end)
 
-script.on_event(defines.events.on_tick, function(event)
-	if event.tick % (15) == 0 then
-		local retries = 0
-		while (not checkRoboports()) and retries < 10 do
-			AdvanceIndex()
-			retries = retries + 1
-		end
-	end
+script.on_nth_tick(600, function(event)
+	local retries = 0
+	while (not checkRoboports()) and retries < 10 do
+		AdvanceIndex()
+		retries = retries + 1
+	end	
 end)
 
 script.on_init(function()
 	init()
 end)
+
+function tablelength(T)
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
+end

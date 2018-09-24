@@ -3,8 +3,8 @@ function init()
 	global.index = 1
 	--game.print("Total surfaces" .. #game.surfaces)
 	--local roboports = game.surfaces[1].find_entities_filtered{type="roboport"}
-	for _, surfaceIndex in pairs(game.surfaces) do
-		for index, port in pairs(surfaceIndex.find_entities_filtered{type="roboport"}) do
+	for surfaceIndex, surface in pairs(game.surfaces) do
+		for index, port in pairs(surface.find_entities_filtered{type="roboport"}) do
 			addPort(port)
 		end
 	end
@@ -18,8 +18,7 @@ function checkRoboports()
 		if creeper then -- Redundant?
 			local roboport = creeper.roboport
 			local radius = creeper.radius
-			local amount = 0
-			-- Place a tile per every 10 robots.
+			local amount = 0			
 			if roboport and roboport.valid then --Check if still alive
 				if roboport.logistic_network and roboport.logistic_network.valid and roboport.prototype.electric_energy_source_prototype.buffer_capacity == roboport.energy then --Check if powered!
 					if roboport.logistic_cell.construction_radius == 0 then --Not a valid creeper.
@@ -27,7 +26,7 @@ function checkRoboports()
 						return false
 					end
 					if roboport.logistic_network.available_construction_robots > 0 then
-						local constructionFactor = 5
+						local constructionFactor = settings.global["concreep construction factor"].value
 						amount = math.max(math.floor(roboport.logistic_network.available_construction_robots / constructionFactor), 1)						
 						--game.print("Total Construction Robots / ".. constructionFactor .. ": " .. amount)
 						if creep(global.index, amount) then

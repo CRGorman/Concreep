@@ -2,7 +2,12 @@
 Version: 2.0.0
 Date: 24. 09. 2018
   Features:
-    - Concreep now prioritizes refined concrete.
+    - Concreep now prioritizes refined concrete
+	- Concreep can have scaled limits to how much it can tax the robot network
+  Behavior:
+    - Cycles every 30 seconds instead of every 15 units (.25 seconds)
+  Bug Fixes:
+    - Works with multiple surfaces
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.0
 Date: 28. 12. 2017

@@ -68,7 +68,7 @@ function creep(index, amount)
 					local tile = roboport.surface.get_tile(roboport.position.x + xx, roboport.position.y + yy)
 					--Skip already built tiles.
 					--if not (settings.global["ignore placed tiles"].value and not tile.hidden_tile) or not string.find(tile.name, "concrete") then 
-					if not tile.hidden_tile or (not string.find(tile.name, "concrete") and not settings.global["ignore placed tiles"].value and not string.find(title.name, "refined-concrete")) then
+					if not tile.hidden_tile or (not string.find(tile.name, "concrete") and not settings.global["ignore placed tiles"].value and not string.find(tile.name, "refined-concrete")) then
 					--if not (string.find(tile.name, "concrete") or tile.name == "stone-path" or string.find(tile.name, "dect-")) then
 						local ghost = creeper.pattern[(xx-2) % 4][(yy-2) % 4]
 						local it = creeper.item[(xx-2) % 4][(yy-2) % 4]

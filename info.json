@@ -1,11 +1,11 @@
 {
   "name": "ConcreepRefined",
-  "version": "2.0.0",
+  "version": "2.18.0",
   "title": "Concreep Refined",
   "author": "Zero Serenity",
   "contact": "",
   "homepage": "https://github.com/CRGorman/Concreep",
   "description": "Roboports automatically place refined concrete within their reach.",
-  "factorio_version": "0.16",
-  "dependencies": ["base >= 0.16.27"]
+  "factorio_version": "0.18",
+  "dependencies": ["base >= 0.18.00"]
 }

@@ -1,17 +1,30 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.18.2
+Date: 6. 27. 2020
+  Features:
+    - Debug mode added
+    - Customizable tick counter
+  Bugfixes:
+    - Cliffs will now be set for deconstruction instead of dissapearing along with cliff explosives.
+---------------------------------------------------------------------------------------------------
+Version: 2.18.1
+Date: 3. 02. 2020
+  Features:
+    - Customizable pavement type
+---------------------------------------------------------------------------------------------------
 Version: 2.18.0
 Date: 3. 02. 2020
-  Bug Fixes:
+  Bugfixes:
     - Version update to .18
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.0
 Date: 24. 09. 2018
   Features:
     - Concreep now prioritizes refined concrete
-	- Concreep can have scaled limits to how much it can tax the robot network
-  Behavior:
+	  - Concreep can have scaled limits to how much it can tax the robot network
+  Changes:
     - Cycles every 30 seconds instead of every 15 units (.25 seconds)
-  Bug Fixes:
+  Bugfixes:
     - Works with multiple surfaces
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.0

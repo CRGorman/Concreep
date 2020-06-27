@@ -23,5 +23,28 @@ data:extend({
 		setting_type = "runtime-global",
 		default_value = true,
 		order = "03"
-	}
+    },
+    {
+        type = "string-setting",
+        name = "alternate pavement",
+        setting_type = "runtime-global",
+        default_value = "refined-concrete",
+        order = "04"
+    },
+    {
+        type = "bool-setting",
+        name = "debug mode",
+        setting_type = "runtime-global",
+        default_value = false,
+        order = "05"
+    },
+    {
+        type = "int-setting",
+        name = "tick count",
+        setting_type = "runtime-global",
+        default_value = 1800,
+        minimum_value = 600,
+        maximum_value = 18000,
+        order = "06"
+    }
 })
